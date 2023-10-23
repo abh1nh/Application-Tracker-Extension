@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Application Tracker Extension",
+  "version": "0.1",
+  "content_scripts": [
+      {
+          "matches":[
+              "*://www.linkedin.com/jobs/view/*",
+              "*://www.monster.com/job-openings/*",
+              "*://ca.indeed.com/viewjob*"
+          ],
+          "js": ["content.js"]
+      }
+  ],
+  "background": {
+      "service_worker": "background.js",
+      "type": "module"
+  },
+  "action": {
+      "default_icon": "bg.png"
+  },
+  "permissions": ["scripting", "tabs", "activeTab", "storage"]
+}
