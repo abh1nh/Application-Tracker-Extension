@@ -4,6 +4,7 @@ console.log("bg script running")
 //"*://www.linkedin.com/jobs/search/*",
 
 
+/*
 import { MongoClient, ServerApiVersion } from './node_modules/mongodb/mongodb';
 
 
@@ -29,17 +30,41 @@ async function run() {
   }
 }
 run().catch(console.dir);
+*/
 
 
+fetch("https://jsonplaceholder.typicode.com/todos", {
+  method: "POST",
+  body: JSON.stringify({
+    userId: 1,
+    title: "Fix my bugs",
+    completed: false
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+});
 
+const url = "https://us-east-1.aws.data.mongodb-api.com/app/application-0-xpnoc/endpoint/data/v1";
 
 chrome.action.onClicked.addListener((tab) => {
   
   (async () => {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-    const response = await chrome.tabs.sendMessage(tab.id, {status: "pressed"});
+    const jobInfo = await chrome.tabs.sendMessage(tab.id, {status: "pressed"});
     console.log("message passed")
+    console.log(jobInfo)
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        yo:true,
+        title:"example"
+      })
+    });
+
     console.log(response)
+
   })();
 
 
