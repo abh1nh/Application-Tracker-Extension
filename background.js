@@ -1,6 +1,8 @@
 console.log("bg script running")
 
-const url = "https://us-east-2.aws.data.mongodb-api.com/app/data-ksrwp/endpoint/data/v1/action/insertOne";
+const APIurl = "https://us-east-2.aws.data.mongodb-api.com/app/data-ksrwp/endpoint/data/v1/action/insertOne";
+const url = 'https://corsproxy.io/?' + encodeURIComponent(APIurl);
+
 
 chrome.action.onClicked.addListener((tab) => {
   
@@ -20,10 +22,7 @@ chrome.action.onClicked.addListener((tab) => {
         dataSource: "AppTrackExtCluster1",
         database: "DB1",
         collection:"App-Track-Ext_tb1",
-        document: {
-          "status": "open",
-          "text"  : "Do the dishes"
-        }
+        document: jobInfo
       })
     });
 
