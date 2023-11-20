@@ -8,7 +8,8 @@ let appSchema = {
     "TITLE": "",
     "COMPANY": "",
     "LOCATION": "",
-    "DATEAPPLIED": ""
+    "DATEAPPLIED": "",
+    "NOTES": ""
 }
 
 let temp = appSchema;
@@ -44,6 +45,8 @@ function linkedInTrigger(){   //logic to extract temp info from LinkedIn
 
     temp.DATEAPPLIED= `${month}-${day}-${year}`;
 
+    temp.NOTES = "";
+
     console.log(temp);
 
 }
@@ -78,6 +81,8 @@ function monsterTrigger(){    //logic to extract temp info from monster
 
   temp.DATEAPPLIED= `${month}-${day}-${year}`;
 
+  temp.NOTES = "";
+
   console.log(temp);
 
 }
@@ -111,6 +116,8 @@ function indeedTrigger(){     //logic to extract temp info from indeed
   let year = date.getFullYear();
 
   temp.DATEAPPLIED= `${month}-${day}-${year}`;
+
+  temp.NOTES = "";
 
   console.log(temp);
 
